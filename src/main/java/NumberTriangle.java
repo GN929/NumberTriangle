@@ -131,24 +131,24 @@ public class NumberTriangle {
             // remove when done; this line is included so running starter code prints the contents of the file
             System.out.println(line);
 
+            //processing the lines
             String[] tokens = line.split("\\s+");
             List<NumberTriangle> currentRow = new ArrayList<>();
             for (String token : tokens) {
                 int value = Integer.parseInt(token);
                 currentRow.add(new NumberTriangle(value));
             }
-
+            //initialize first row, set top
             if (top == null && !currentRow.isEmpty()) {
                 top = currentRow.get(0);
             }
-
+            //link the node of previous row with the current row
             if (!previousRow.isEmpty()) {
                 for (int i = 0; i < previousRow.size(); i++) {
                     previousRow.get(i).setLeft(currentRow.get(i));
                     previousRow.get(i).setRight(currentRow.get(i + 1));
                 }
             }
-
             previousRow = currentRow;
 
             //read the next line
